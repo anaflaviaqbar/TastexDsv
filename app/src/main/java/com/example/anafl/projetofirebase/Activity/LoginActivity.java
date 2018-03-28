@@ -294,8 +294,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intentAbrirTelaPrincipal);
         }
     public void esqueceuSenha(){
-        Intent teste = new Intent(LoginActivity.this, EsqueceuSenha.class);
-        startActivity(teste);
+        Intent teste1 = new Intent(LoginActivity.this, EsqueceuSenha.class);
+        startActivity(teste1);
     }
 }
 

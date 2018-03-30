@@ -15,15 +15,15 @@ import android.widget.Button;
 
 import com.example.anafl.projetofirebase.R;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+//public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public class MainActivity extends AppCompatActivity{
 
-    private Button btnAbrirActivityLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
 
@@ -34,19 +34,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        btnAbrirActivityLogin = (Button)findViewById(R.id.btnFazerLogin);
-        btnAbrirActivityLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentAbrirTelaLogin= new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intentAbrirTelaLogin);
-            }
-        });
+        navigationView.setNavigationItemSelectedListener(this);*/
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -101,5 +92,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+    }*/
 }

@@ -14,10 +14,10 @@
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:src="@mipmap/tastex1" />
+            android:src="@mipmap/tastex2" />
 
         <EditText
             android:layout_width="match_parent"
@@ -68,7 +68,8 @@
                 android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
+            </com.google.android.gms.common.SignInButton>
         </LinearLayout>
 
     </LinearLayout>

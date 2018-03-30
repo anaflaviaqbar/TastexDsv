@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@layout/gradient_background">
+    android:background="@layout/gradient_background1">
     <ImageView
         android:id="@+id/imagemlogo"
         android:layout_width="616dp"

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@layout/gradient_background2"
     tools:context="com.example.anafl.projetofirebase.Activity.CadastroActivity">
 
     <ScrollView

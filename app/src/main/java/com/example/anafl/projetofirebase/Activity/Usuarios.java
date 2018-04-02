@@ -1,4 +1,4 @@
-package com.example.anafl.projetofirebase.Entidades;
+package com.example.anafl.projetofirebase.Activity;
 
 import com.example.anafl.projetofirebase.DAO.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +22,7 @@ public class Usuarios {
     private String dataNasc;
     private String sexo;
     private String email;
+    private String telefone;
 
 
     public Usuarios(){
@@ -41,6 +42,7 @@ public class Usuarios {
         hashMapUsuario.put("senha", getSenha());
         hashMapUsuario.put("cep", getCep());
         hashMapUsuario.put("sexo", getSexo());
+        hashMapUsuario.put("telefone", getTelefone());
 
         return hashMapUsuario;
     }
@@ -51,6 +53,14 @@ public class Usuarios {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getNome() {

@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.anafl.projetofirebase.DAO.ConfiguracaoFirebase;
-import com.example.anafl.projetofirebase.Entidades.Usuarios;
 import com.example.anafl.projetofirebase.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;

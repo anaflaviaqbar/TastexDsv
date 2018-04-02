@@ -3,26 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/framCompra"
             android:icon="@mipmap/compra"
-            android:title="Comprar" />
+            android:title="Comprar"
+            />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/framVenda"
             android:icon="@mipmap/venda"
             android:title="Vender" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/framAviso"
             android:icon="@mipmap/aviso"
             android:title="Avisos" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/framConfiguracao"
             android:icon="@mipmap/configuracao"
             android:title="Configuração" />
     </group>
@@ -30,11 +27,11 @@
     <item android:title="Histórico">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/framHistoricoC"
                 android:icon="@mipmap/compra"
                 android:title="Compras" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/framHistoricoV"
                 android:icon="@mipmap/venda"
                 android:title="Vendas" />
         </menu>

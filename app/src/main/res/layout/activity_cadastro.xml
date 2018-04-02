@@ -39,6 +39,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/edtCadContato"
+                android:hint="Telefone:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/edtCadSenha"
                 android:hint="Senha:"/>
             <EditText

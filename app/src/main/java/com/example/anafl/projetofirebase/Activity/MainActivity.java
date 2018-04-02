@@ -1,7 +1,10 @@
 package com.example.anafl.projetofirebase.Activity;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,20 +15,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-
 import com.example.anafl.projetofirebase.R;
 
-//public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,10 +34,12 @@ import com.example.anafl.projetofirebase.R;
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);*/
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
-    /*@Override
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -62,7 +64,7 @@ import com.example.anafl.projetofirebase.R;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_trocarconta) {
             return true;
         }
 
@@ -75,22 +77,25 @@ import com.example.anafl.projetofirebase.R;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.framCompra) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.framVenda) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.framAviso) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.framConfiguracao) {
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.framHistoricoC) {
+
+
+        } else if (id == R.id.framHistoricoV) {
+
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }*/
+    }
 }

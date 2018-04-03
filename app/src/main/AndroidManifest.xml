@@ -70,8 +70,6 @@
         <!-- Fim Facebook -->
 
         <activity android:name=".Activity.EsqueceuSenha" />
-        <activity android:name=".Activity.FacebookActivity" />
-        <activity android:name=".Activity.GmailActivity"></activity>
     </application>
 
 </manifest>

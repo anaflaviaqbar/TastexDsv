@@ -7,20 +7,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/framCompra"
-            android:icon="@mipmap/compra"
+            android:icon="@drawable/compra"
             android:title="Comprar"
             />
         <item
             android:id="@+id/framVenda"
-            android:icon="@mipmap/venda"
+            android:icon="@drawable/vendas"
             android:title="Vender" />
         <item
             android:id="@+id/framAviso"
-            android:icon="@mipmap/aviso"
+            android:icon="@drawable/avisos"
             android:title="Avisos" />
         <item
             android:id="@+id/framConfiguracao"
-            android:icon="@mipmap/configuracao"
+            android:icon="@drawable/config"
             android:title="Configuração" />
     </group>
 
@@ -28,11 +28,11 @@
         <menu>
             <item
                 android:id="@+id/framHistoricoC"
-                android:icon="@mipmap/compra"
+                android:icon="@drawable/compras"
                 android:title="Compras" />
             <item
                 android:id="@+id/framHistoricoV"
-                android:icon="@mipmap/venda"
+                android:icon="@drawable/vendas_hist"
                 android:title="Vendas" />
         </menu>
     </item>

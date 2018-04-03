@@ -8,22 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import com.example.anafl.projetofirebase.DAO.ConfiguracaoFirebase;
-import com.example.anafl.projetofirebase.Helper.Base64Custom;
-import com.example.anafl.projetofirebase.Helper.Preferencias;
+import com.example.anafl.projetofirebase.Activity.Usuarios;
 import com.example.anafl.projetofirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+//import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+//import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -43,6 +41,8 @@ public class CadastroActivity extends AppCompatActivity {
 
     private String uid;
 
+    private boolean isFeminino = false;
+    private boolean isMasculino = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +51,7 @@ public class CadastroActivity extends AppCompatActivity {
         autenticacao = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
 
-        edtCadEmail = (EditText) findViewById(R.id.edtCadEmail);
+        edtCadEmail = (EditText) findViewById(R.id.edtEmail);
         edtCadNome = (EditText) findViewById(R.id.edtCadNome);
         edtCadCep = (EditText) findViewById(R.id.edtCadCep);
         edtCadDataNasc = (EditText) findViewById(R.id.edtCadDataNasc);
@@ -66,8 +66,16 @@ public class CadastroActivity extends AppCompatActivity {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtCadSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
+                if(edtCadSenha.getText().toString().equals(edtConfSenha.getText().toString())){
                     cadastrarUsuario(edtCadEmail.getText().toString(), edtCadSenha.getText().toString());
+                }else{
+                    Toast.makeText(CadastroActivity.this, "Senhas diferentes!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
+    }
                     // usuarios = new Usuarios();
                     //usuarios.setNome(edtCadNome.getText().toString());
                     //usuarios.setEmail(edtCadEmail.getText().toString());
@@ -79,65 +87,78 @@ public class CadastroActivity extends AppCompatActivity {
                     //} else {
                     //  usuarios.setSexo("Masculino");
                     //}
-                } else {
-                    Toast.makeText(CadastroActivity.this, "As senhas não são correspondentes", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-}
+             //   } else {
+               //     Toast.makeText(CadastroActivity.this, "As senhas não são correspondentes", Toast.LENGTH_LONG).show();
+                //}
+        //});
+//}
 
     private void cadastrarUsuario(String email, String password) {
-        autenticacao.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(CadastroActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = autenticacao.getCurrentUser();
-                    novoUsuario(user.getUid());
-                    Toast.makeText(CadastroActivity.this, "Usuario cadastrado com sucesso", Toast.LENGTH_LONG).show();
-                    finish();
-                    //String identificadorUsuario = Base64Custom.codificarBase64(usuarios.getEmail());
-                    //FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    //usuarios.setId(identificadorUsuario);
-                    //usuarios.salvar();
-
-                    //Preferencias preferenciasAndroid = new Preferencias(CadastroActivity.this);
-                    //preferenciasAndroid.salvarUsuarioPreferencias(identificadorUsuario, usuarios.getNome());
-
-                    //abrirLoginUsuario();
-                } else {
-                    String erroExcecao = "";
-
-                    try {
-                        throw task.getException();
-                    } catch (FirebaseAuthWeakPasswordException e) {
-                        erroExcecao = "Digite uma senha mais forte, contendo no mínimo 8 caracteres de letras e números";
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        erroExcecao = "O e-email digitado é inválido, digite um novo e-mail";
-                    } catch (FirebaseAuthUserCollisionException e) {
-                        erroExcecao = "Esse e-mail já está cadastrado no sistema";
-                    } catch (Exception e) {
-                        erroExcecao = "Erro ao efetuar o cadastro";
-                        e.printStackTrace();
+        autenticacao.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            //Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = autenticacao.getCurrentUser();
+                            //updateUI(user);
+                            novoUsuario(user.getUid());
+                            Toast.makeText(CadastroActivity.this, "Cadastro feito sucesso!", Toast.LENGTH_LONG).show();
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(CadastroActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+                        // ...
                     }
-                    Toast.makeText(CadastroActivity.this, "Erro" + erroExcecao, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                });
     }
-    public void novoUsuario(String userId){
+
+    public void abrirLoginUsuario() {
+        Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void AbreRedefine() {
+        Intent intentAbreRedefine = new Intent(CadastroActivity.this, EsqueceuSenha.class);
+        startActivity(intentAbreRedefine);
+        finish();
+    }
+
+    public void checaSexo(View v) {
+        boolean checked = ((RadioButton) v).isChecked();
+
+        switch (v.getId()) {
+            case R.id.rbFeminino:
+                if (checked) {
+                    isFeminino = true;
+                    isMasculino = false;
+                }
+                break;
+            case R.id.rbMasculino:
+                if (checked) {
+                    isFeminino = false;
+                    isMasculino = true;
+                }
+        }
+    }
+    private void novoUsuario(String userId) {
         Usuarios usuarios = new Usuarios();
 
-        usuarios = new Usuarios();
         usuarios.setNome(edtCadNome.getText().toString());
-        usuarios.setNome(edtCadContato.getText().toString());
         usuarios.setEmail(edtCadEmail.getText().toString());
         usuarios.setCep(edtCadCep.getText().toString());
+        usuarios.setTelefone(edtCadContato.getText().toString());
         usuarios.setDataNasc(edtCadDataNasc.getText().toString());
         usuarios.setSenha(edtCadSenha.getText().toString());
-        if (rbFeminino.isChecked()) {
+        if(isFeminino){
             usuarios.setSexo("Feminino");
-        } else {
+        }else if(isMasculino){
             usuarios.setSexo("Masculino");
         }
         usuarios.setId(userId);
